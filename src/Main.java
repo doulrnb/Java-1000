@@ -6,45 +6,37 @@ import java.lang.Math;
 
 public class Main {
     public static void main(String[] args) {
-        try(Scanner input = new Scanner(new File("Users/denissmeyan/Yandex/Java/input.txt"));
-            FileWriter output = new FileWriter("Users/denissmeyan/Yandex/Java/output.txt")) {
+        try(Scanner input = new Scanner(new File("/Users/denissmeyan/Yandex/Java/input.txt"));
+            FileWriter output = new FileWriter("/Users/denissmeyan/Yandex/Java/output.txt")) {
             String[] strIn = input.nextLine().split(" ");
             int[] intIn = new int[strIn.length];
 
             for(int i = 0; i < strIn.length; i++)
                 intIn[i] = Integer.parseInt(strIn[i]);
 
-            int maxA, maxB;
-            int avgA, avgB;
-            int minA, minB;
-
-            //maxA
-            if (intIn[0] > intIn[1] && intIn[0] > intIn[2]) {
-                maxA = intIn[0];
-                avgA = Math.max(intIn[1], intIn[2]);
-                minA = Math.min(intIn[1], intIn[2]);
-            } else if (intIn[1] > intIn[0] && intIn[1] > intIn[2]) {
-                maxA = intIn[1];
-                avgA = Math.max(intIn[0], intIn[2]);
-            } else {
-                maxA = intIn[2];
-                avgA = Math.max(intIn[1], intIn[0]);
+            //sort
+            for(int i = 0; i < intIn.length; i++) {
+                for(int j = 0; j < 2 - i; j++) {
+                    if(intIn[j + 1] > intIn[j]) {
+                        int swap = intIn[j];
+                        intIn[j] = intIn[j + 1];
+                        intIn[j + 1] = swap;
+                    }
+                }
+                for(int j = 3; j < 5 - i; j++) {
+                    if(intIn[j + 1] > intIn[j]) {
+                        int swap = intIn[j];
+                        intIn[j] = intIn[j + 1];
+                        intIn[j + 1] = swap;
+                    }
+                }
             }
 
-            //maxB
-            if (intIn[3] > intIn[4] && intIn[3] > intIn[5]) {
-                maxB = intIn[3];
-                avgB = Math.max(intIn[1], intIn[2]);
-            } else if (intIn[4] > intIn[3] && intIn[4] > intIn[5]) {
-                maxB = intIn[4];
-                avgB = Math.max(intIn[1], intIn[2]);
-            } else {
-                maxB = intIn[5];
-                avgB = Math.max(intIn[1], intIn[2]);
-            }
+            int result = intIn[0] * intIn[3] +
+                    intIn[1] * intIn[4] +
+                    intIn[2] * intIn[5];
 
-            int maxResult = maxA * maxB;
-
+            output.write(result + "");
 
         } catch (IOException e) {
             System.out.println("Error - " + e);
