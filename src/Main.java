@@ -15,6 +15,7 @@ public class Main {
                 intIn[i] = Integer.parseInt(strIn[i]);
 
             //sort
+
             for(int i = 0; i < intIn.length; i++) {
                 for(int j = 0; j < 2 - i; j++) {
                     if(intIn[j + 1] > intIn[j]) {
