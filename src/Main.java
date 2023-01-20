@@ -6,8 +6,8 @@ import java.lang.Math;
 
 public class Main {
     public static void main(String[] args) {
-        try(Scanner input = new Scanner(new File("/Users/denissmeyan/Yandex/Java/input.txt"));
-            FileWriter output = new FileWriter("/Users/denissmeyan/Yandex/Java/output.txt")) {
+        try(Scanner input = new Scanner(new File("resources/input.txt"));
+            FileWriter output = new FileWriter("resources/output.txt")) {
             String[] strIn = input.nextLine().split(" ");
             int[] intIn = new int[strIn.length];
 
